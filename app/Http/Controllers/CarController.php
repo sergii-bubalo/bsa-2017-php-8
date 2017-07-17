@@ -53,7 +53,7 @@ class CarController extends Controller
     public function store(Request $request): View
     {
         $this->validate($request, [
-            'model' => 'required|max:255|alpha_dash',
+            'model' => 'required|max:255|regex:~[a-zA-Z_ ]~',
             'year' => 'required|integer|between:1000,' . date('Y'),
             'registration_number' => 'required|alpha_num|size:6',
             'color' => 'required|max:255|alpha',
@@ -109,7 +109,7 @@ class CarController extends Controller
     public function update(Request $request, int $id): View
     {
         $this->validate($request, [
-            'model' => 'required|max:255|regex:~[a-zA-Z ]~',
+            'model' => 'required|max:255|regex:~[a-zA-Z_ ]~',
             'year' => 'required|integer|between:1000,' . date('Y'),
             'registration_number' => 'required|alpha_num|size:6',
             'color' => 'required|max:255|alpha',
